@@ -43,12 +43,11 @@ class Main extends Mango.Core.Application {
 ```
 use Mango.Server.Server;
 use Mango.Http.Request;
+use Mango.Cli.StdIn;
+use Mango.Cli.StdOut;
 
 class Application {
-    
-    /**
-     * Inherited from parent class
-     */
+   
     public serve() 
     {
         let server = new Server('127.0.0.1', env('LISTEN_PORT'));
@@ -59,13 +58,12 @@ class Application {
             });
         }
     }
-
-    /**
-     * Implementation of abstract method 
-     */
-    public run(Request request) : Response 
+    
+    public cli(StdIn in, StdOut out) 
     {
-        return new Response(200, 'Dummy page');
+        out.line('Override this method in your app');
     }
+
+    public abstract run(Request request) : Response;
 }
 ```
