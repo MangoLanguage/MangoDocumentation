@@ -13,20 +13,24 @@ $router->get('/', function() use ($blade) {
 });
 
 $router->get('/contribute', function() use ($blade) {
-    echo $blade->make('index');
+    echo $blade->make('contribute');
 });
 
 $router->get('/privacy', function() use ($blade) {
-    echo $blade->make('index');
+    echo $blade->make('privacy');
 });
 
 $router->get('/terms', function() use ($blade) {
-    echo $blade->make('index');
+    echo $blade->make('terms');
+});
+
+$router->get('/road-map', function() use ($blade) {
+    echo $blade->make('road-map');
 });
 
 $router->get('/doc/([\w\-]+)/([\w\-]+)', function($section, $page) use ($blade) {
 
-    $path = __DIR__ . '/../_documentation/' . basename($section) . '/' . basename($page) . '.md';
+    $path = __DIR__ . '/../documentation/' . basename($section) . '/' . basename($page) . '.md';
 
     if (!file_exists($path)) {
         header('HTTP/1.1 404 Not Found');
