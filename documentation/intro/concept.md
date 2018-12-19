@@ -37,6 +37,5 @@ Its recommended to use template engines for that purposes.
 - Scalar types in Mango are pseudo-objects, which means that you are allowed to do like that: 
 ```
 let str = 'some random string';
-
 str.toUpperCase().split(' '); // [SOME, RANDOM, STRING] 
 ```
