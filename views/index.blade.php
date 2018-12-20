@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-7">
                 <h4 class="text-center">So, why?</h4>
-                <p>The sense of developing another language is a lot of accumulated architectural problems PHP and JS languages.
+                <p>The sense of developing another language is a lot of accumulated architectural problems in PHP and JS languages.
                     The other languages as C++, C#, Java, Python and Ruby wasn't developed directly for web development and are not that
                     popular in this domain as PHP and JS.
                 </p>

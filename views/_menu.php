@@ -11,6 +11,9 @@ $sections = [
     ],
     'Core' => [
         'core/core-packages' => 'Core packages',
+        'core/control-structures' => 'Control structures',
+        'core/operators' => 'Operators',
+        'core/expressions' => 'Expressions',
     ],
 ];
 
