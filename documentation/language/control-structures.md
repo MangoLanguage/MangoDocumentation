@@ -7,7 +7,7 @@ Sample of usage:
 ```
 if (foo.isBar()) {
     // 1
-} else if(foo.isBarSibling()) {
+} else if (foo.isBarSibling()) {
     // 2
 } else {
     //
@@ -31,24 +31,24 @@ for (let i = 0; i <= 10; i++) {
     //
 }
 ```
-Its also can be used in order to walk across the walking structure:
+Its also can be used in order to walk across the walking dereferenced structure:
 ```
-for (value in resource) {
+for (resource => value: int) {
     //
 }
 
-for ((value, key) in resource) {
+for (someArray => (value: int, index: int)) {
     //
 } 
 ```
 
 
 ### when
-Replaces `switch` with more powerful conditions. Allows to rename checking condition.
+Replaces `switch` with more powerful conditions. This structure allows dereferencing by using `=>` structure.
 Expression can be used, true result leads to body execution. In case of scalar value passed through,
 structure compares origin value to the scalar value.
 ```
-when (value as v) {
+when (this.someLongValirableName.someParam => v) {
     "test" -> {
         // action
     },
@@ -63,3 +63,13 @@ when (value as v) {
     }
 }
 ```
+
+### dereference ( => )
+This structure can be used in particular structures
+1) for
+2) when
+3) async
+
+In case of `for`, only `Array` and `ArrayMapped` could be dereferenced.
+In case of `when` and `async`, it just copies (only scalar, references arrays and objects) variable with a new name. 
+ 

@@ -10,9 +10,11 @@ use Mango.Object;
 
 const SOME = 1;
 
-class TestClass extends BaseClass
+class TestClass extends BaseClass implements DummyInterface
 {       
-    constructor(private string value = 'test') 
+    private some: Array<string> = [];
+
+    constructor(private value: string = 'test') 
     {}
     
     get value;
@@ -21,10 +23,10 @@ class TestClass extends BaseClass
     /**
      * Some method
      */
-    public fun some(string param, string otherParam) : void 
+    public fun some(param: string, otherParam: string) : void 
     {
-        this.value = this.value.toUpperCase();      
-        this.dummyMethod();    
+        this.some[] = this.value = this.value.toUpperCase();      
+        this.some[] = this.dummyMethod();    
     }
          
     public fun dummyMethod() : string 
@@ -63,28 +65,40 @@ It can be used anywhere in the class, that we describing in this file, but nowhe
 Constants are always calculated once within the lifetime of mango.  
 
 ```
-class TestClass extends BaseClass
-{
-    constructor(private string value = 'test') {}   
+class TestClass extends BaseClass implements DummyInterface
+{       
+    private some: Array<string> = [];
+
+    constructor(private value: string = 'test') 
+    {}
 ```
 The classes implementation is quite similar to what we can see in Java or PHP but with some difference:
 in constructor, we can declare property of class by simply add access modifier. This avoids forwarding 
 a variable into the class property through constructor.
 
 ```
+private some: Array<string> = [];
+```
+Here we can see typing of class property. Typing in such case is REQUIRED. This was decided because of
+making language more solid. In case of array, you can specify `Array<string>` in cause you have 
+array with only strings inside, but also `Array` in cause you dont know what types of values will
+be inside.
+ 
+
+```
 get value; 
 set value;
 ```
-in class declares property as acceptable. It's a syntax sugar which can be 
+in class declares property as gettable and settable. It's a syntax sugar which can be 
 replaced with the following code:
 
 ```
-public fun getValue() 
+public fun getValue() : T
 {
     return this.value;
 }
 
-public fun setValue(value)
+public fun setValue(value: T) : void
 {
     this.value = value;
 }
@@ -104,7 +118,7 @@ public fun some(string param, string otherParam) : void
     this.dummyMethod();    
 }
 ```
-Method declaration requires access modifier and keyword `fun`. Also, it supports setting return 
+Method declaration requires access modifier and keyword `fun`. Also, it requires setting return 
 value type and specifying arguments types. 
 
 ```
